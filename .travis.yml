@@ -22,12 +22,16 @@ jobs:
         - yarn test
 
     - stage: publish
-        name: 'bump version to beta and publish'
-        language: node_js
-        script: |
-          set -e
-          yarn bumpVersion:release
-        skip_cleanup: true
-        on:
-          all_branches: true
-        if: (branch =~ /^(release*)/) AND type != pull_request AND !(commit_message =~ /(\[skip release-ci\])/)
+      name: 'bump version to beta and publish'
+      language: node_js
+      script: |
+        set -e
+        chmod +x scripts/npm-publish.js
+        yarn bumpVersion:release
+        yarn build
+        git add .
+        git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
+        node scripts/npm-publish.js
+      skip_cleanup: true
+      on:
+        all_branches: true
