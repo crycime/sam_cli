@@ -6,9 +6,14 @@
   "author": "zizhenli <zizhenli@hk01.com>",
   "license": "MIT",
   "scripts": {
-    "release": "standard-version"
+    "test": "jest",
+    "bumpVersion:master": "standard-version --commit-all --message 'chore(production): %s\n\n[skip master-ci]' --no-verify",
+    "bumpVersion:release": "standard-version --commit-all --message 'chore(release): %s\n\n[skip release-ci]' --no-verify --prerelease beta",
+    "bumpVersion:master:dry": "standard-version --commit-all --message 'chore(production): %s\n\n[skip master-ci]' --no-verify --dry-run",
+    "bumpVersion:release:dry": "standard-version --commit-all --message 'chore(release): %s\n\n[skip release-ci]' --no-verify --prerelease beta --dry-run"
   },
   "devDependencies": {
+    "jest": "^25.1.0",
     "standard-version": "^8.0.1"
   }
 }
