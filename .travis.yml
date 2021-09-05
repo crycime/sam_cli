@@ -6,6 +6,16 @@ group: stable
 dist: trusty
 os: linux
 
+deploy:
+  provider: pages:git
+  token: ${GITHUG_TOKEN}
+  edge: true
+
+before_script: |
+  git config user.email "snile657@outlook.com"
+  git config user.name "crycime"
+
+before_install: npm install -g yarn@^1.10.0
 install: yarn install --frozen-lockfile
 
 cache:
@@ -19,3 +29,17 @@ jobs:
       language: node_js
       script:
         - yarn test
+
+    - stage: publish
+      name: 'bump version to beta and publish'
+      language: node_js
+      script: |
+        set -e
+        yarn bumpVersion:release
+        git config user.email "snile657@outlook.com"
+        git config user.name "crycime"
+        git add .
+        git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${TRAVIS_BRANCH}
+      skip_cleanup: true
+      on:
+        all_branches: true
