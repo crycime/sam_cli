@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0-beta.0](https://github.com/crycime/sam_cli/compare/v1.0.1-beta.9...v1.1.0-beta.0) (2021-09-05)
+
+
+### Features
+
+* 自动化发布 ([343a950](https://github.com/crycime/sam_cli/commit/343a950a500a2c56b4d0ce51ff167bb97f1eccf3))
+
 ### [1.0.1](https://github.com/crycime/sam_cli/compare/v1.0.1-beta.9...v1.0.1) (2021-09-05)
 
 ### [1.0.1-beta.9](https://github.com/crycime/sam_cli/compare/v1.0.1-beta.8...v1.0.1-beta.9) (2021-09-05)
