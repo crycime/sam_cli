@@ -35,11 +35,11 @@ jobs:
       language: node_js
       script: |
         set -e
-        echo -e ${GITHUG_TOKEN}
         yarn bumpVersion:release
+        git config user.email "snile657@outlook.com"
         git config user.name "crycime"
         git add .
-        git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
+        git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" origin HEAD:${TRAVIS_BRANCH}
       skip_cleanup: true
       on:
         all_branches: true
