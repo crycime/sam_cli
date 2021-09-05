@@ -6,10 +6,10 @@ group: stable
 dist: trusty
 os: linux
 
-#deploy:
-#  provider: pages:git
-#  token: ${GITHUG_TOKEN}
-#  edge: true
+deploy:
+  provider: pages:git
+  token: ${GITHUG_TOKEN}
+  edge: true
 
 before_script: |
   git config user.email "snile657@outlook.com"
@@ -36,8 +36,9 @@ jobs:
       script: |
         set -e
         yarn bumpVersion:release
+        git config user.name "crycime"
         git add .
-        git push --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
+        git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
       skip_cleanup: true
       on:
         all_branches: true
