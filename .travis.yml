@@ -31,11 +31,11 @@ jobs:
         - yarn test
 
     - stage: publish
-      name: 'bump version to beta and publish'
+      name: 'bump version to stable production and publish'
       language: node_js
       script: |
         set -e
-#        yarn bumpVersion:release
+        yarn bumpVersion:main
         git config user.email "snile657@outlook.com"
         git config user.name "crycime"
         git add .
@@ -43,4 +43,4 @@ jobs:
       skip_cleanup: true
       on:
         all_branches: true
-      if: (branch =~ /^(main*)/) AND type != pull_request AND !(commit_message =~ /(\[skip release-ci\])/)
+      if: (branch =~ /^(main*)/) AND type != pull_request AND !(commit_message =~ /(\[skip main-ci\])/)
