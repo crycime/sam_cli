@@ -37,7 +37,7 @@ jobs:
         set -e
         yarn bumpVersion:release
         git add .
-        git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
+        git push --quiet "https://${Travis_Token}@github.com/crycime/sam_cli.git" --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
       skip_cleanup: true
       on:
         all_branches: true
