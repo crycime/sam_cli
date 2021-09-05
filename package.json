@@ -5,6 +5,9 @@
   "repository": "https://crycime@github.com/crycime/sam_cli.git",
   "author": "zizhenli <zizhenli@hk01.com>",
   "license": "MIT",
+  "bin": {
+    "sam": "./index.js"
+  },
   "scripts": {
     "test": "jest",
     "bumpVersion:master": "standard-version --commit-all --message 'chore(production): %s\n\n[skip master-ci]' --no-verify",
