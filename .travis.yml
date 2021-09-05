@@ -11,10 +11,6 @@ deploy:
   token: ${GITHUG_TOKEN}
   edge: true
 
-before_script: |
-  git config user.email "snile657@outlook.com"
-  git config user.name "crycime"
-
 before_install: npm install -g yarn@^1.10.0
 install: yarn install --frozen-lockfile
 
@@ -31,15 +27,44 @@ jobs:
         - yarn test
 
     - stage: publish
-      name: 'bump version to stable production and publish'
+      name: 'bump version to beta and publish'
       language: node_js
+      deploy:
+        provider: npm
+        email: "snile657@outlook.com"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
       script: |
         set -e
+        chmod +x scripts/npm-publish.js
+        yarn bumpVersion:release
+        git config user.email "snile657@outlook.com"
+        git config user.name "crycime"
+        git add .
+        git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${TRAVIS_BRANCH}
+        node scripts/npm-publish.js
+      skip_cleanup: true
+      on:
+        all_branches: true
+      if: (branch =~ /^(release*)/) AND type != pull_request AND !(commit_message =~ /(\[skip release-ci\])/)
+
+    - stage: publish
+      name: 'bump version to stable production and publish'
+      language: node_js
+      deploy:
+        provider: npm
+        email: "snile657@outlook.com"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+      script: |
+        set -e
+        chmod +x scripts/npm-publish.js
         yarn bumpVersion:main
         git config user.email "snile657@outlook.com"
         git config user.name "crycime"
         git add .
         git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${TRAVIS_BRANCH}
+        node scripts/npm-publish.js
       skip_cleanup: true
       on:
         all_branches: true
