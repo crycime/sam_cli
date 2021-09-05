@@ -35,6 +35,7 @@ jobs:
       language: node_js
       script: |
         set -e
+        echo -e ${GITHUG_TOKEN}
         yarn bumpVersion:release
         git config user.name "crycime"
         git add .
