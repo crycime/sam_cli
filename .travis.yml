@@ -6,6 +6,10 @@ group: stable
 dist: trusty
 os: linux
 
+before_script: |
+  git config user.email "snile657@outlook.com"
+  git config user.name "crycime"
+
 before_install: npm install -g yarn@^1.10.0
 install: yarn install --frozen-lockfile
 
