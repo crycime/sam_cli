@@ -35,7 +35,7 @@ jobs:
       language: node_js
       script: |
         set -e
-        yarn bumpVersion:release
+#        yarn bumpVersion:release
         git config user.email "snile657@outlook.com"
         git config user.name "crycime"
         git add .
@@ -43,3 +43,4 @@ jobs:
       skip_cleanup: true
       on:
         all_branches: true
+      if: (branch =~ /^(main*)/) AND type != pull_request AND !(commit_message =~ /(\[skip release-ci\])/)
