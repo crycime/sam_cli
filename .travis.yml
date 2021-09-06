@@ -29,11 +29,11 @@ jobs:
     - stage: publish
       name: 'bump version to beta and publish'
       language: node_js
-      deploy:
-        provider: npm
-        email: "snile657@outlook.com"
-        api_key: "$NPM_TOKEN"
-        skip_cleanup: true
+#      deploy:
+#        provider: npm
+#        email: "snile657@outlook.com"
+#        api_key: "$NPM_TOKEN"
+#        skip_cleanup: true
       script: |
         set -e
         chmod +x scripts/npm-publish.js
