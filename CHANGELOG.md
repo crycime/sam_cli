@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0-beta.6](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.5...v1.1.0-beta.6) (2021-09-06)
+
+
+### Bug Fixes
+
+* 测试下 ([d019317](https://github.com/crycime/sam_cli/commit/d019317c52f8bb9ffb106256c3f7e12c180c9c23))
+
 ## [1.1.0-beta.5](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.4...v1.1.0-beta.5) (2021-09-06)
 
 ## [1.1.0-beta.4](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.3...v1.1.0-beta.4) (2021-09-06)
