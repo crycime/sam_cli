@@ -6,6 +6,10 @@ group: stable
 dist: trusty
 os: linux
 
+before_script: |
+  git config user.email "snile657@outlook.com"
+  git config user.name "crycime"
+
 before_install: npm install -g yarn@^1.10.0
 install: yarn install --frozen-lockfile
 
@@ -28,8 +32,6 @@ jobs:
         set -e
         chmod +x scripts/npm-publish.js
         yarn bumpVersion:release
-        git config user.email "snile657@outlook.com"
-        git config user.name "crycime"
         git add .
         git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${TRAVIS_BRANCH}
       deploy:
@@ -49,8 +51,6 @@ jobs:
         set -e
         chmod +x scripts/npm-publish.js
         yarn bumpVersion:main
-        git config user.email "snile657@outlook.com"
-        git config user.name "crycime"
         git add .
         git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${TRAVIS_BRANCH}
       deploy:
