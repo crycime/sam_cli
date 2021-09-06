@@ -9,11 +9,6 @@ os: linux
 before_install: npm install -g yarn@^1.10.0
 install: yarn install --frozen-lockfile
 
-before_deploy:
-  - npm config set access public
-  - npm config set registry https://registry.npmjs.org
-  - npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-
 cache:
   yarn: true
   directories:
@@ -37,10 +32,14 @@ jobs:
         git config user.name "crycime"
         git add .
         git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${TRAVIS_BRANCH}
-        npm publish --tag=beta
-      skip_cleanup: true
-      on:
-         all_branches: true
+      deploy:
+        provider: npm
+        email: snile657@outlook.com
+        api_key: "$NPM_TOKEN"
+        tag: beta
+        skip_cleanup: true
+        on:
+          all_branches: true
       if: (branch =~ /^(release*)/) AND type != pull_request AND !(commit_message =~ /(\[skip release-ci\])/)
 
     - stage: publish
