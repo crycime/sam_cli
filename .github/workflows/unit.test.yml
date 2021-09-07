@@ -20,14 +20,14 @@ jobs:
           yarn test
 
   publish_beta:
+    if: ${{ contains(github.ref, 'main') && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [14.x]
     steps:
-      - if: ${{ contains(github.ref, 'main') && github.event_name == 'push' }}
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: bump version to beta and publish
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
