@@ -20,6 +20,7 @@ jobs:
           yarn test
 
   build:
+    if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'main') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
