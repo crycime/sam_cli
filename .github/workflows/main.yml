@@ -5,9 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo ${{ github.ref == ~ /^(release*)/ }}
+        if: ${{ github.event_name == 'pull_request' && github.ref == ~ /^(release*)/ }}
+        run: echo "hello word"
       - name: Dump job context
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
