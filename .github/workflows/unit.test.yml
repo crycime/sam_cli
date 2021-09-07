@@ -26,6 +26,14 @@ jobs:
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      - name: bump version to beta
+          uses: actions/setup-node@v2
+          with:
+            node-version: ${{ matrix.node-version }}
+            cache: 'yarn'
+          run: |
+            yarn install --frozen-lockfile
+            yarn bumpVersion:release
       - name: Commit files
         run: |
           git config --local user.email "snile657@outlook.com"
