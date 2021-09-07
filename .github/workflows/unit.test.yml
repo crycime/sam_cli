@@ -1,6 +1,12 @@
 name: Node.js CI
 
 on: [push, pull_request]
+defaults:
+  run:|
+    git config --global user.email "snile657@outlook.com"
+    git config --global user.name "crycime"
+    yarn install --frozen-lockfile
+
 
 jobs:
   unit_test:
