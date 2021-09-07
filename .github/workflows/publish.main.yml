@@ -18,7 +18,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn bumpVersion:main
           git add .
-      - run: git push --verbose --no-verify --follow-tags
+      - run: git push --verbose --no-verify --follow-tags --quiet "https://${{ secrets.GITHUB_TOKEN }}@github.com/crycime/sam_cli.git" HEAD:${{ github.ref }}
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
