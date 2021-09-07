@@ -19,29 +19,23 @@ jobs:
           yarn install --frozen-lockfile
           yarn test
 
-  publish_beta:
-    if: ${{ contains(github.ref, 'main') && github.event_name == 'push' }}
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
-      - name: bump version to beta and publish
-        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - run: |
-          set -e
-          chmod +x scripts/npm-publish.js
-          yarn install --frozen-lockfile
-          yarn bumpVersion:release
-          git config --global user.email "snile657@outlook.com"
-          git config --global user.name "crycime"
-          git add .
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      - name: Create local changes
+        run: |
+          ...
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Add changes" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.GHUB_TOKEN }}
           branch: ${{ github.ref }}
