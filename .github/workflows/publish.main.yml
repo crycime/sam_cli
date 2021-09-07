@@ -18,35 +18,22 @@ jobs:
           yarn install --frozen-lockfile
           yarn bumpVersion:main
           git add .
-          git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${github.ref}
-          npm publish
-#      - name: Push changes
-#        uses: ad-m/github-push-action@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch: ${{ github.ref }}
-#      - uses: actions/checkout@v2
-#      # Setup .npmrc file to publish to npm
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: '14.x'
-#          registry-url: 'https://registry.npmjs.org'
-#      - run: npm install
-#      - run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
-#  publish:
-#    needs: push
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      # Setup .npmrc file to publish to npm
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: '14.x'
-#          registry-url: 'https://registry.npmjs.org'
-#      - run: npm install
-#      - run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish:
+    needs: push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm install
+      - run: npm test
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
