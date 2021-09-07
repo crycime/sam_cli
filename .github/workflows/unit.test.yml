@@ -20,7 +20,7 @@ jobs:
           yarn test
 
   build:
-    if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'main') }}
+    if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'main') && !contains(github.event.head_commit.message, 'skip release-ci') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
