@@ -3,7 +3,7 @@ name: bump version to beta and publish
 on: [push, pull_request]
 
 jobs:
-  publish_release:
+  push:
     if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'release') && !contains(github.event.head_commit.message, 'skip release-ci') }}
     runs-on: ubuntu-latest
     steps:
