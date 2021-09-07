@@ -37,5 +37,11 @@ jobs:
           chmod +x scripts/npm-publish.js
           yarn install --frozen-lockfile
           yarn bumpVersion:release
+          git config user.email "snile657@outlook.com"
+          git config user.name "crycime"
           git add .
-          git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ github.token }}
+          branch: ${{ github.ref }}
