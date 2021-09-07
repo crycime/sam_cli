@@ -37,8 +37,8 @@ jobs:
           chmod +x scripts/npm-publish.js
           yarn install --frozen-lockfile
           yarn bumpVersion:release
-          git config user.email "snile657@outlook.com"
-          git config user.name "crycime"
+          git config --global user.email "snile657@outlook.com"
+          git config --global user.name "crycime"
           git add .
       - name: Push changes
         uses: ad-m/github-push-action@master
