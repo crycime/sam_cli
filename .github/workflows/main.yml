@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
-        if: ${{ github.event_name == 'pull_request' && contains(github.ref, 'release') }}
+        if: ${{ github.event_name == 'pull_request' && contains(github.ref, 'main') }}
         run: echo "hello word"
       - name: Dump job context
         env:
