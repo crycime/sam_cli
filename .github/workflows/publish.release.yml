@@ -1,0 +1,25 @@
+name: bump version to beta and publish
+
+on: [push, pull_request]
+
+jobs:
+  publish_release:
+    if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'release') && !contains(github.event.head_commit.message, 'skip release-ci') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Commit files
+        run: |
+          git config --global user.email "snile657@outlook.com"
+          git config --global user.name "crycime"
+          yarn install --frozen-lockfile
+          yarn bumpVersion:release
+          git add .
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
