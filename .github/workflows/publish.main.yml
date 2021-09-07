@@ -18,7 +18,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn bumpVersion:main
           git add .
-          git push -f --no-verify --follow-tags
+          git push --verbose --no-verify --follow-tags --quiet "https://${GITHUG_TOKEN}@github.com/crycime/sam_cli.git" HEAD:${github.ref}
           npm publish
 #      - name: Push changes
 #        uses: ad-m/github-push-action@master
