@@ -18,3 +18,23 @@ jobs:
       - run: |
           yarn install --frozen-lockfile
           yarn test
+
+  publish_beta:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - if: ${{ contains(github.ref, 'main') && github.event_name == 'push' }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: |
+          set -e
+          chmod +x scripts/npm-publish.js
+          yarn bumpVersion:release
+          git add .
+          git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
