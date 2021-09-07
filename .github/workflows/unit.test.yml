@@ -35,6 +35,7 @@ jobs:
       - run: |
           set -e
           chmod +x scripts/npm-publish.js
+          yarn install --frozen-lockfile
           yarn bumpVersion:release
           git add .
           git push --verbose --no-verify --follow-tags origin HEAD:${TRAVIS_BRANCH}
