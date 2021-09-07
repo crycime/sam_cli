@@ -18,7 +18,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn bumpVersion:main
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
-          npm publish --tag ${{ github.event.release.target_commitish }}
+          npm publish
           git add .
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
