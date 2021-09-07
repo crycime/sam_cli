@@ -28,9 +28,9 @@ jobs:
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - name: Commit files
         run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
+          git config --local user.email "snile657@outlook.com"
+          git config --local user.name "crycime"
+          git add .
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
