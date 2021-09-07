@@ -25,6 +25,7 @@ jobs:
           branch: ${{ github.ref }}
 
   publish:
+    needs: push
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
