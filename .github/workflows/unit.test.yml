@@ -1,12 +1,6 @@
 name: Node.js CI
 
 on: [push, pull_request]
-defaults:
-  run:|
-    git config --global user.email "snile657@outlook.com"
-    git config --global user.name "crycime"
-    yarn install --frozen-lockfile
-
 
 jobs:
   unit_test:
@@ -25,7 +19,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn test
 
-  build:
+  publish_release:
     if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'main') && !contains(github.event.head_commit.message, 'skip release-ci') }}
     runs-on: ubuntu-latest
     steps:
