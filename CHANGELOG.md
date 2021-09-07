@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0-beta.36](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.35...v1.1.0-beta.36) (2021-09-07)
+
+## [1.1.0-beta.35](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.34...v1.1.0-beta.35) (2021-09-07)
+
+## [1.1.0-beta.34](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.33...v1.1.0-beta.34) (2021-09-07)
+
+## [1.1.0-beta.33](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.32...v1.1.0-beta.33) (2021-09-07)
+
+## [1.1.0-beta.32](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.31...v1.1.0-beta.32) (2021-09-07)
+
+## [1.1.0-beta.31](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.30...v1.1.0-beta.31) (2021-09-07)
+
+## [1.1.0-beta.30](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.29...v1.1.0-beta.30) (2021-09-07)
+
+## [1.1.0-beta.29](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.28...v1.1.0-beta.29) (2021-09-07)
+
+## [1.1.0-beta.28](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.27...v1.1.0-beta.28) (2021-09-07)
+
+## [1.1.0-beta.27](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.26...v1.1.0-beta.27) (2021-09-07)
+
+## [1.1.0-beta.26](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.25...v1.1.0-beta.26) (2021-09-07)
+
+## [1.1.0-beta.25](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.10...v1.1.0-beta.25) (2021-09-07)
+
+## [1.1.0-beta.24](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.10...v1.1.0-beta.24) (2021-09-07)
+
+## [1.1.0-beta.23](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.10...v1.1.0-beta.23) (2021-09-07)
+
+## [1.1.0-beta.22](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.10...v1.1.0-beta.22) (2021-09-07)
+
 ## [1.1.0-beta.17](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.10...v1.1.0-beta.17) (2021-09-07)
 
 ## [1.1.0-beta.16](https://github.com/crycime/sam_cli/compare/v1.1.0-beta.10...v1.1.0-beta.16) (2021-09-07)
