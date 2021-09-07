@@ -18,11 +18,9 @@ jobs:
           yarn install --frozen-lockfile
           yarn bumpVersion:main
           git add .
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      - run: git push --verbose --no-verify --follow-tags
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     needs: push
