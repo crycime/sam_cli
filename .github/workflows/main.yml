@@ -7,7 +7,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo ${{ github.ref == 'refs/heads/main' }}
+        run: echo ${{ github.ref == ~ /^(release*)/ }}
       - name: Dump job context
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
