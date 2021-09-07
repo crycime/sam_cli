@@ -28,10 +28,10 @@ jobs:
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - name: Commit files
         run: |
-          yarn install --frozen-lockfile
-          yarn bumpVersion:release
           git config --global user.email "snile657@outlook.com"
           git config --global user.name "crycime"
+          yarn install --frozen-lockfile
+          yarn bumpVersion:release
           git add .
       - name: Push changes
         uses: ad-m/github-push-action@master
