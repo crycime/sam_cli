@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ branch }}
+          GITHUB_CONTEXT: ${{ toJSON(branch) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Dump job context
         env:
