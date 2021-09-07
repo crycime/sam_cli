@@ -3,7 +3,24 @@ name: bump version to stable production and publish
 on: [push, pull_request]
 
 jobs:
+  unit_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: |
+          yarn install --frozen-lockfile
+          yarn test
+
   publish:
+    needs: unit_test
     if: ${{ github.event_name != 'pull_request' && contains(github.ref, 'main') && !contains(github.event.head_commit.message, 'skip main-ci') }}
     runs-on: ubuntu-latest
     steps:
